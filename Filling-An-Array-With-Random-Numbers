@@ -1,0 +1,29 @@
+using System;
+using System.Diagnostics;
+using System.Dynamic;
+using System.Security.Cryptography.X509Certificates;
+using static System.Formats.Asn1.AsnWriter;
+namespace ponpom
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[,] doubleArray = new int[2, 4];
+            Random rand = new Random();
+
+            
+
+            for (int i = 0; i < doubleArray.GetLength(0); i++)
+            {
+                for (int j = 0; j < doubleArray.GetLength(1); j++)
+                {
+                    rand.Next(0, 556);
+                    Console.Write(doubleArray[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+
+        }
+    }
+}
