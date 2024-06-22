@@ -1,0 +1,63 @@
+using System;
+using System.Diagnostics;
+using System.Dynamic;
+using System.Security.Cryptography.X509Certificates;
+using static System.Formats.Asn1.AsnWriter;
+namespace ponpom
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = { 234, 7, 5, 43, 6, 2, 1, 3, 6 };
+            bool isTrue = true;
+            int[] Numbers = new int[numbers.Length];
+            int[] Trynumbers;
+            int result = 0, score = 0;
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                isTrue = true;
+                result = numbers[i];
+                RemoveAt(numbers, i, out Trynumbers);
+                for (int j = 0; j < Trynumbers.Length; j++)
+                {
+
+                    if (result == Trynumbers[j])
+                    {
+                        isTrue = false;
+                        break;
+                    }
+                }
+                if (isTrue)
+                {
+                    Numbers[score] = result;
+                    score++;
+                }
+            }
+
+
+            foreach (var number in numbers)
+                Console.Write(number + " ");
+
+            Console.WriteLine();
+            foreach (var number in Numbers)
+                Console.Write(number + " ");
+
+        }
+        static void RemoveAt(int[] array, int index, out int[] Trynumbers)
+        {
+            Trynumbers = new int[array.Length - 1];
+            for (int i = 0; i < index; i++)
+            {
+                Trynumbers[i] = array[i];
+            }
+            for (int i = index; i < array.Length - 1; i++)
+            {
+                Trynumbers[i] = array[i + 1];
+            }
+
+        }
+
+    }
+}
