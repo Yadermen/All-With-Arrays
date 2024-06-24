@@ -1,0 +1,46 @@
+using System;
+using System.Diagnostics;
+using System.Dynamic;
+using System.Security.Cryptography.X509Certificates;
+using static System.Formats.Asn1.AsnWriter;
+namespace ponpom
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rand = new Random();
+            int[,,] Narray = new int[rand.Next(4, 6), rand.Next(3, 10), rand.Next(7, 16)];
+            for (int i = 0; i < Narray.GetLength(0); i++)
+            {
+                for (int j = 0; j < Narray.GetLength(1); j++)
+                {
+                    for (int k = 0; k < Narray.GetLength(2); k++)
+                    {
+                        Narray[i, j, k] = rand.Next(10, 100);
+                    }
+                }
+            }
+            for (int i = 0; i < Narray.GetLength(0); i++)
+            {
+                Console.WriteLine();
+                Console.WriteLine($"--------Page {i + 1}--------");
+                Console.WriteLine();
+                for (int j = 0; j < Narray.GetLength(1); j++)
+                {
+                   
+                    for (int k = 0; k < Narray.GetLength(2); k++)
+                    {
+                        Console.Write(Narray[i, j, k] + "|");
+                    }
+                    Console.WriteLine();
+                }
+            }
+
+        }
+    }
+}
+
+
+
+
